@@ -1,4 +1,9 @@
 Hello
 
+= flash[:notice]
+
 = link_to "auth/github" do
-  github
+  github login
+
+= link_to logout_path, method: :delete do
+  logout
