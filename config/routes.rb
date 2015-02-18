@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   # omniauth
   get "/auth/:provider/callback", to: "sessions#create"
 
-  delete "/logout" => "sessions#destroy", :as => :logout
+  delete "/signout" => "sessions#destroy", :as => :signout
 end
