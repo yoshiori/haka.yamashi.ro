@@ -8,4 +8,9 @@ class User < ActiveRecord::Base
       u.image = auth_hash[:info][:image]
     end
   end
+
+  def fire_incense
+    last_incense = incenses.recent.first
+    incenses.create unless last_incense && last_incense.created_at.today?
+  end
 end

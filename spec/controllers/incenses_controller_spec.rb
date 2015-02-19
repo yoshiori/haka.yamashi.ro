@@ -15,10 +15,22 @@ describe IncensesController do
       before do
         allow(controller).to receive(:current_user) { user }
       end
+      context "when twice a day" do
+        context "when same user" do
+          before do
+            Timecop.travel(Time.local(2012, 12, 3, 12, 15, 0))
+            user.incenses.create
+          end
 
-      it "create new incense" do
-        expect { post :create }.to change { Incense.count }.from(0).to(1)
-        expect(response.status).to be 201
+          after do
+            Timecop.return
+          end
+
+          it "not create incense" do
+            expect { post :create }.to_not change { Incense.count }
+            expect(response.status).to be 409
+          end
+        end
       end
     end
 

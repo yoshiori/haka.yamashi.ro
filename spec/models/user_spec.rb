@@ -37,4 +37,59 @@ describe User do
       end
     end
   end
+
+  describe "#fire_incense" do
+    let(:user) do
+      User.create(
+        uid: 1,
+        nickname: "yoshiori",
+        name: "Yoshiori SHOJI",
+        image: "http://example.com/",
+      )
+    end
+
+    context "when once a day" do
+      context "first fire" do
+        it "create new incense" do
+          expect { user.fire_incense }.to change { user.incenses.count }.from(0).to(1)
+        end
+      end
+
+      context "other day fire" do
+        before do
+          Timecop.travel(Time.local(2012, 12, 3, 12, 15, 0))
+          user.fire_incense
+          Timecop.travel(Time.local(2012, 12, 4, 0, 0, 0))
+        end
+
+        after do
+          Timecop.return
+        end
+
+        it "create new incense" do
+          expect { user.fire_incense }.to change { user.incenses.count }.from(1).to(2)
+        end
+      end
+    end
+
+    context "when twice a day" do
+      before do
+        Timecop.travel(Time.local(2012, 12, 3, 12, 15, 0))
+        user.fire_incense
+      end
+
+      after do
+        Timecop.return
+      end
+
+      subject do
+        user.fire_incense
+      end
+
+      it "not create incense" do
+        expect { subject }.to_not change { user.incenses.count }
+        expect(subject).to be_nil
+      end
+    end
+  end
 end

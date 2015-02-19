@@ -2,10 +2,13 @@ class IncensesController < ApplicationController
   before_action :login_required
 
   def create
-    current_user.incenses.create
-    render partial: "/root/incenses",
-           locals: { incenses: Incense.recent.limit(Incense::TOP_VIEW_SIZE) },
-           status: :created
+    if current_user.fire_incense
+      render partial: "/root/incenses",
+             locals: { incenses: Incense.recent.limit(Incense::TOP_VIEW_SIZE) },
+             status: :created
+    else
+      head status: 409
+    end
   end
 
   private
