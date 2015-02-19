@@ -12,8 +12,4 @@ class ApplicationController < ActionController::Base
   rescue ActiveRecord::RecordNotFound
     reset_session
   end
-
-  def login_required
-    redirect_to root_path unless current_user
-  end
 end

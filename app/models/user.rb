@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :incenses
+
   def self.find_or_create_from_auth_hash(auth_hash)
     User.find_or_create_by(uid: auth_hash[:uid]) do |u|
       u.nickname = auth_hash[:info][:nickname]
