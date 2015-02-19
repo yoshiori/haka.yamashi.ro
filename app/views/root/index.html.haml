@@ -2,8 +2,9 @@ Hello
 
 = flash[:notice]
 
-= link_to "auth/github" do
-  github login
-
-= link_to signout_path, method: :delete do
-  logout
+- if current_user
+  = link_to incenses_path, method: :post, remote: true, class: "burn-incense" do
+    線香をあげる
+- else
+  = link_to "auth/github" do
+    GitHub でサインインして線香をあげる
