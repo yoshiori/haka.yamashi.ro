@@ -18,6 +18,6 @@
                 %span.glyphicon.glyphicon-log-out><
             - else
               = link_to "auth/github", data: { toggle: "tooltip", placement: "left" },  title: "Sign in with GitHub"  do
-                %span.glyphicon.glyphicon-log-in
+                = fa_icon "github"
     .container
       = yield
