@@ -1,3 +1,5 @@
+= image_tag "tombstone.jpg", style: "width:100%;", class: "img-thumbnail"
+
 - if current_user
   = link_to incenses_path, method: :post, remote: true, class: "burn-incense btn btn-primary btn-lg btn-block", data: { disable_with: "火を付けてます" } do
     = fa_icon "fire"
@@ -19,4 +21,4 @@
           %span{ "aria-hidden" => "true" }X
         %h4.modal-title ありがとう！
       .modal-body
-        = image_tag "thankyou.png", style: "max-width:100%;", class: "img-circle"
+        = image_tag "thankyou.png", style: "width:100%;", class: "img-circle"
