@@ -1,5 +1,6 @@
 - if current_user
-  = link_to incenses_path, method: :post, remote: true, class: "burn-incense btn btn-primary btn-lg btn-block" do
+  = link_to incenses_path, method: :post, remote: true, class: "burn-incense btn btn-primary btn-lg btn-block", data: { disable_with: "火を付けてます" } do
+    = fa_icon "fire"
     線香をあげる
 - else
   = link_to "auth/github", class: "burn-incense btn btn-primary btn-lg btn-block" do

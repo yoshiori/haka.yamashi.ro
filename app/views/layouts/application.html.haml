@@ -9,12 +9,14 @@
     %nav.navbar.navbar-default.navbar-fixed-top
       .container-fluid
         .navbar-header
-          %span.navbar-brand.glyphicon.glyphicon-tower
+          .navbar-brand
+            %span.glyphicon.glyphicon-tower
+            墓.yamashi.ro
         .collapse.navbar-collapse
           .navbar-brand.navbar-right
             - if current_user
               = link_to signout_path, method: :delete, data: { toggle: "tooltip", placement: "left" },  title: "Sign Out" do
-                = image_tag current_user.image, :size => "22x22", style: "max-width:100px; margin-top: -7px;", class: "img-rounded"
+                = image_tag current_user.image, size: "22x22", style: "max-width:100px; margin-top: -7px;", class: "img-rounded"
                 %span.glyphicon.glyphicon-log-out><
             - else
               = link_to "auth/github", data: { toggle: "tooltip", placement: "left" },  title: "Sign in with GitHub"  do
