@@ -1,10 +1,11 @@
-Hello
-
-= flash[:notice]
-
 - if current_user
-  = link_to incenses_path, method: :post, remote: true, class: "burn-incense" do
+  = link_to incenses_path, method: :post, remote: true, class: "burn-incense btn btn-primary btn-lg btn-block" do
     線香をあげる
 - else
-  = link_to "auth/github" do
+  = link_to "auth/github", class: "burn-incense btn btn-primary btn-lg btn-block" do
     GitHub でサインインして線香をあげる
+%hr
+%p
+  %H2 最近あげられた線香
+  #incenses
+    = render partial: "incenses", locals: {incenses: @incenses}

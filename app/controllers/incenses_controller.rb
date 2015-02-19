@@ -3,7 +3,9 @@ class IncensesController < ApplicationController
 
   def create
     current_user.incenses.create
-    head status: :created
+    render partial: "/root/incenses",
+           locals: { incenses: Incense.recent },
+           status: :created
   end
 
   private
