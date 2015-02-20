@@ -21,5 +21,8 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: haka
+  username: <%= ENV['RAILS_DB_USER_NAME'] %>
+  password: <%= ENV['RAILS_DB_USER_PASSWORD'] %>
+  encoding: utf8
