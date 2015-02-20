@@ -1,4 +1,4 @@
-RAILS_ROOT = File.expand_path("../..", __FILE__)
+RAILS_ROOT = File.expand_path("../..", __dir__)
 
 # Number of worker process
 worker_processes 3
