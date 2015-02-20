@@ -39,8 +39,13 @@ group :production do
   gem 'pg'
 end
 
-# Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
+group :deployment do
+  # Use Capistrano for deployment
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-unicorn'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
