@@ -9,10 +9,41 @@
     = fa_icon "github"
     GitHub でサインインして線香をあげる
 %hr
-%p
-  %H2 最近あげられた線香
-  #incenses
-    = render partial: "incenses", locals: {incenses: @incenses}
+.row
+  .col-md-6
+    %H2 最近あげられた線香
+    #incenses
+      = render partial: "incenses", locals: {incenses: @incenses}
+  .col-md-6
+    %H2 実際のお墓の所在地
+    .well
+      %address
+        %strong
+          横浜たちばな霊園
+        %dl
+          %dt
+            住所
+          %dd
+            = link_to "https://goo.gl/maps/bsDsj" do
+              横浜市神奈川区松見町2-578
+          %dt
+            HP
+          %dd
+            = link_to "http://www.e-ohaka.com/detail/id1212712280-427770.html" do
+              http://www.e-ohaka.com/detail/id1212712280-427770.html
+          %dt
+            注意点
+          %dd
+            場所が比較的わかりにくいです。
+            %br
+            タクシーで行くなら菊名駅からですが、タクシーの運転手さんも結構迷います。
+            %br
+            住所のリンク先である地図の写真をみてたどり着いてください。
+            %br
+            お墓は霊園を入り奥に進むと階段があるので、それを降りた場所にあります。
+            %br
+            お線香は現地で売っており、火をつけるバーナーもあります。
+
 #thankyou.modal.fade
   .modal-dialog
     .modal-content
