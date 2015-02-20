@@ -20,7 +20,7 @@ preload_app true
 # check_client_connection false
 
 before_fork do |server, worker|
-  old_pid = "#{RAILS_ROOT}/log/unicorn.pid.oldbin"
+  old_pid = "#{RAILS_ROOT}/tmp/pids/unicorn.pid.oldbin"
   if File.exist?(old_pid) && server.pid != old_pid
     begin
       Process.kill("QUIT", File.read(old_pid).to_i)
