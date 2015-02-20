@@ -10,7 +10,7 @@ listen "#{RAILS_ROOT}/tmp/unicorn.sock"
 # 60 seconds (the default)
 # timeout 30
 
-pid "#{RAILS_ROOT}/log/unicorn.pid"
+pid "#{RAILS_ROOT}/tmp/pids/unicorn.pid"
 
 # By default, the Unicorn Logger will write to stderr.
 stderr_path "#{RAILS_ROOT}/log/unicorn.log"

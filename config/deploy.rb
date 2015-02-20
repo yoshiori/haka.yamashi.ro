@@ -1,5 +1,5 @@
 # config valid only for Capistrano 3.1
-lock '3.1.0'
+# lock '3.1.0'
 
 set :application, 'haka.yamashi.ro'
 set :repo_url, 'git@github.com:yoshiori/haka.yamashi.ro.git'
