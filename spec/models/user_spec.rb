@@ -53,6 +53,12 @@ describe User do
         it "create new incense" do
           expect { user.fire_incense }.to change { user.incenses.count }.from(0).to(1)
         end
+
+        it "post tweet" do
+          expect(YmsrLogger).to receive(:tweet)
+            .with("yoshiori がお線香をあげました http://haka.yamashi.ro/ #ymsr").once
+          user.fire_incense
+        end
       end
 
       context "other day fire" do
