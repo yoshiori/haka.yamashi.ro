@@ -1,6 +1,5 @@
 require "fluent-logger"
 
-
 YmsrLogger.logger = if Rails.env.production?
                       Fluent::Logger::FluentLogger.new(
                         :ymsr,

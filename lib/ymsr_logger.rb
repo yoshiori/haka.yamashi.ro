@@ -3,7 +3,7 @@ class YmsrLogger
     attr_accessor :logger
 
     def tweet(message)
-      logger.post(:tweet, mesage: message)
+      logger.post(:tweet, message: message)
     end
   end
 end
