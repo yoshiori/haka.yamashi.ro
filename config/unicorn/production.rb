@@ -5,7 +5,7 @@ worker_processes 3
 
 # listen "#{RAILS_ROOT}/tmp/unicorn.sock", :backlog => 64
 # listen 8080, :tcp_nopush
-listen "#{RAILS_ROOT}/tmp/unicorn.sock"
+listen "/tmp/unicorn.sock"
 
 # 60 seconds (the default)
 # timeout 30
