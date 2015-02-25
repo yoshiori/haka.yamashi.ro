@@ -4,7 +4,7 @@
     %h3
       %small= incense.created_at.strftime("%Y/%m/%d")
     %ul.list-group
-      = render partial: "incense", locals: {incense: incense}
+      = render partial: "incenses/incense", locals: {incense: incense}
   - else
-    = render partial: "incense", locals: {incense: incense}
+    = render partial: "incenses/incense", locals: {incense: incense}
   - last_date = incense.created_at

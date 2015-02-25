@@ -1,0 +1,9 @@
+.col-md-4
+  - if @user.image
+    = image_tag @user.image, style: "width:100%;",class: "img-rounded"
+
+  %H1
+    = @user.name
+    .small= @user.nickname
+.col-md-8
+  = render partial: "incenses/incenses", locals: {incenses: @user.incenses}
