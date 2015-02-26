@@ -14,6 +14,8 @@
     %H2 最近あげられた線香
     #incenses
       = render partial: "incenses/incenses", locals: {incenses: @incenses}
+    %ul.pagination
+      %li= link_to "もっと見る",incenses_path
   .col-md-6
     %H2 実際のお墓の所在地
     .well
