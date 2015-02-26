@@ -1,3 +1,5 @@
 %h1 線香一覧
 
 = render partial: "incenses/incenses", locals: {incenses: @incenses}
+
+= paginate @incenses

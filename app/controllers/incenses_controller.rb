@@ -12,7 +12,7 @@ class IncensesController < ApplicationController
   end
 
   def index
-    @incenses = Incense.all.recent
+    @incenses = Incense.all.recent.page(params[:page])
   end
 
   private
