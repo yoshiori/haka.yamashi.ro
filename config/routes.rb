@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   delete "/signout" => "sessions#destroy", as: :signout
 
-  resources :incenses, only: :create
+  resources :incenses, only: [:create, :index]
 
   get "/@:nickname" => "users#show", as: :user
 end

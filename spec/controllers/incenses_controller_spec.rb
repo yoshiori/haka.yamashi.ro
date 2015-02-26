@@ -41,4 +41,29 @@ describe IncensesController do
       end
     end
   end
+
+  describe "#index" do
+    let(:user) do
+      User.create(
+        uid: 1,
+        nickname: "yoshiori",
+        name: "Yoshiori SHOJI",
+        image: "http://example.com/",
+      )
+    end
+
+    before do
+      user.fire_incense
+    end
+
+    it "assigns @incenses" do
+      get :index
+      expect(assigns(:incenses)).to_not be_nil
+    end
+
+    it "renders the index template" do
+      get :index
+      expect(response).to render_template("index")
+    end
+  end
 end

@@ -1,5 +1,5 @@
 class IncensesController < ApplicationController
-  before_action :login_required
+  before_action :login_required, only: :create
 
   def create
     if current_user.fire_incense
@@ -9,6 +9,10 @@ class IncensesController < ApplicationController
     else
       head status: 409
     end
+  end
+
+  def index
+    @incenses = Incense.all.recent
   end
 
   private
