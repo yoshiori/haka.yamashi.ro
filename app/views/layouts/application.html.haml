@@ -10,17 +10,23 @@
     %nav.navbar.navbar-default.navbar-fixed-top
       .container-fluid
         .navbar-header
-          .navbar-brand
+          %button.navbar-toggle.collapsed{type: "button", data: {toggle: "collapse", target:"#navbar-collapse"}}
+            %span.sr-only Toggle navigation
+            #span.icon-bar
+            #span.icon-bar
+            #span.icon-bar
+          = link_to root_path, class: "navbar-brand" do
             %span.glyphicon.glyphicon-tower
             墓.yamashi.ro
-        .collapse.navbar-collapse
-          .navbar-brand.navbar-right
-            - if current_user
-              = link_to signout_path, method: :delete, data: { toggle: "tooltip", placement: "left" },  title: "Sign Out" do
-                = image_tag current_user.image, size: "22x22", style: "max-width:100px; margin-top: -7px;", class: "img-rounded"
-                %span.glyphicon.glyphicon-log-out><
-            - else
-              = link_to "auth/github", data: { toggle: "tooltip", placement: "left" },  title: "Sign in with GitHub"  do
-                = fa_icon "github"
+        .collapse.navbar-collapse#navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              - if current_user
+                = link_to signout_path, method: :delete, data: { toggle: "tooltip", placement: "left" },  title: "Sign Out" do
+                  = image_tag current_user.image, size: "22x22", style: "max-width:100px; margin-top: -7px;", class: "img-rounded"
+                  %span.glyphicon.glyphicon-log-out><
+              - else
+                = link_to "auth/github", data: { toggle: "tooltip", placement: "left" },  title: "Sign in with GitHub"  do
+                  = fa_icon "github"
     .container
       = yield
