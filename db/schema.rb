@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150219094220) do
+ActiveRecord::Schema.define(version: 20150226040413) do
 
   create_table "incenses", force: :cascade do |t|
     t.integer  "user_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150219094220) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "users", ["nickname"], name: "index_users_on_nickname"
   add_index "users", ["uid"], name: "index_users_on_uid"
 
 end

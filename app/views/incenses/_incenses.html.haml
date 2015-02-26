@@ -1,10 +1,11 @@
-- last_date = Date.tomorrow
-- incenses.each do |incense|
-  - if last_date.beginning_of_day > incense.created_at.beginning_of_day
-    %h3
-      %small= incense.created_at.strftime("%Y/%m/%d")
-    %ul.list-group
-      = render partial: "incenses/incense", locals: {incense: incense}
-  - else
-    = render partial: "incenses/incense", locals: {incense: incense}
-  - last_date = incense.created_at
+- incenses.group_by{|i| i.created_at.beginning_of_day }.each do |date, dairy_incenses|
+  %h3
+    %small= date.strftime("%Y/%m/%d")
+  %ul.list-group
+    - dairy_incenses.each do |incense|
+      %li.list-group-item
+        %span.badge
+          = incense.created_at.strftime("%Y/%m/%d %H:%M:%S")
+        - if incense.user.image
+          = image_tag incense.user.image, :size => "22x22", class: "img-rounded"
+        = incense.user.nickname

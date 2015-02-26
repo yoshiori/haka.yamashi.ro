@@ -6,4 +6,4 @@
     = @user.name
     .small= @user.nickname
 .col-md-8
-  = render partial: "incenses/incenses", locals: {incenses: @user.incenses}
+  = render partial: "incenses/incenses", locals: {incenses: @user.incenses.recent}
