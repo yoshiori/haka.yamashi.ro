@@ -18,3 +18,5 @@
 
 .env
 .capistrano
+
+vendor/bundle
