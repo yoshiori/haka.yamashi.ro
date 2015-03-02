@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226040413) do
+ActiveRecord::Schema.define(version: 20150302103021) do
 
   create_table "incenses", force: :cascade do |t|
     t.integer  "user_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150226040413) do
   create_table "users", force: :cascade do |t|
     t.string   "uid",        null: false
     t.string   "nickname",   null: false
-    t.string   "name",       null: false
+    t.string   "name"
     t.string   "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
