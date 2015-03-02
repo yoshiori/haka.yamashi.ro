@@ -3,7 +3,7 @@ class IncensesController < ApplicationController
 
   def create
     if current_user.fire_incense
-      render partial: "/root/incenses",
+      render partial: "incenses/incenses",
              locals: { incenses: Incense.recent.limit(Incense::TOP_VIEW_SIZE) },
              status: :created
     else

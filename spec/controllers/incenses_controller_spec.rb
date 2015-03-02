@@ -15,6 +15,19 @@ describe IncensesController do
       before do
         allow(controller).to receive(:current_user) { user }
       end
+
+      context "when once a day" do
+        it "create new incense" do
+          expect { post :create }.to change { Incense.count }.from(0).to(1)
+          expect(response.status).to be 201
+        end
+
+        it "renders the incenses template" do
+          post :create
+          expect(response).to render_template("incenses/_incenses")
+        end
+      end
+
       context "when twice a day" do
         context "when same user" do
           before do
