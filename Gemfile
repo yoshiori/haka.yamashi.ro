@@ -50,6 +50,7 @@ group :deployment do
   gem 'capistrano-rbenv'
   gem 'capistrano-bundler'
   gem 'capistrano3-unicorn'
+
 end
 
 group :development, :test do
@@ -68,6 +69,7 @@ group :development, :test do
   gem 'pry-byebug', '~> 3.0.1'
 
   gem 'rack-mini-profiler'
+  gem 'bullet'
 end
 
 group :test do
