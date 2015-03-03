@@ -66,6 +66,8 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'pry-byebug', '~> 3.0.1'
+
+  gem 'rack-mini-profiler'
 end
 
 group :test do
