@@ -65,11 +65,13 @@ group :development, :test do
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-
+  gem 'pry-rails'
   gem 'pry-byebug', '~> 3.0.1'
 
   gem 'rack-mini-profiler'
   gem 'bullet'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do

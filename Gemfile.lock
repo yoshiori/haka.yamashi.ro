@@ -40,6 +40,10 @@ GEM
     autoprefixer-rails (5.1.7)
       execjs
       json
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.3)
@@ -167,6 +171,8 @@ GEM
     pry-byebug (3.0.1)
       byebug (~> 3.4)
       pry (~> 0.10)
+    pry-rails (0.3.3)
+      pry (>= 0.9.10)
     rack (1.6.0)
     rack-health (0.1.2)
       rack (>= 1.2.0)
@@ -273,6 +279,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   bootstrap-sass
   bullet
   byebug
@@ -291,6 +299,7 @@ DEPENDENCIES
   omniauth-github
   pg
   pry-byebug (~> 3.0.1)
+  pry-rails
   rack-health
   rack-mini-profiler
   rack-revision
