@@ -35,6 +35,7 @@ gem "font-awesome-rails"
 
 gem 'dotenv-rails'
 gem 'fluent-logger'
+gem 'rack-health'
 
 group :production do
   # Use Unicorn as the app server
