@@ -24,7 +24,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-
 gem 'haml-rails'
 
 gem 'kaminari'
@@ -37,6 +36,8 @@ gem 'dotenv-rails'
 gem 'fluent-logger'
 gem 'rack-health'
 gem 'rack-revision'
+
+gem 'grape'
 
 group :production do
   # Use Unicorn as the app server

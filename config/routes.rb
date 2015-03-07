@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :incenses, only: [:create, :index], concerns: :paginatable
 
-  # get "/@:nickname" => "users#show", as: :user
   get "/@:nickname/(page/:page)" => "users#show", as: :user
+
+  # API
+  mount YmsrAPI => "/"
 end
