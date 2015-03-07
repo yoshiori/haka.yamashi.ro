@@ -38,6 +38,8 @@ gem 'rack-health'
 gem 'rack-revision'
 
 gem 'grape'
+gem 'grape-rabl'
+gem 'oj'
 
 group :production do
   # Use Unicorn as the app server

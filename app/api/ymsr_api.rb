@@ -1,6 +1,7 @@
 class YmsrAPI < Grape::API
   version "v1", using: :path
   format :json
+  formatter :json, Grape::Formatter::Rabl
   prefix :api
 
   resource :incenses do
@@ -9,8 +10,8 @@ class YmsrAPI < Grape::API
     end
 
     desc "Return a public timeline."
-    get :public_timeline do
-      Incense.recent.includes(:user).page(params[:page])
+    get rabl: "incenses/index" do
+      @incenses = Incense.recent.includes(:user).page(params[:page])
     end
   end
 end
