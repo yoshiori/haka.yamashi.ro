@@ -4,7 +4,7 @@ class Incense < ActiveRecord::Base
 
   scope :recent, -> { order(created_at: :desc) }
 
-  paginates_per 1
+  paginates_per 50
   TOP_VIEW_SIZE = 20
 
   private
