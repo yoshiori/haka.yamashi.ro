@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
     end
   end
 
-  def fire_incense
+  def fire_incense(source: :web)
     last_incense = incenses.recent.first
-    incenses.create unless last_incense && last_incense.created_at.today?
+    incenses.create(source: source) unless last_incense && last_incense.created_at.today?
   end
 
   def create_token

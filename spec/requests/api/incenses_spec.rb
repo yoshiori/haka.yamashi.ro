@@ -19,12 +19,12 @@ describe YmsrAPI do
     )
   end
 
-  before do
-    user.fire_incense
-    user2.fire_incense
-  end
-
   describe "GET /api/v1/incenses" do
+    before do
+      user.fire_incense
+      user2.fire_incense
+    end
+
     context "page 1" do
       it "return incenses json" do
         get "/api/v1/incenses"
@@ -68,6 +68,51 @@ describe YmsrAPI do
           next_page: nil,
           prev_page: 1,
         )
+      end
+    end
+  end
+
+  describe "POST /api/v1/incenses" do
+    context "valid token" do
+      let(:token) { user.create_token.token }
+
+      context "when once a day" do
+        it "create new incense" do
+          expect { post "/api/v1/incenses", token: token }.to change {
+            Incense.count
+          }.from(0).to(1)
+          expect(response.status).to be 201
+          expect(Incense.all.last.source).to eq "api"
+        end
+      end
+
+      context "when twice a day" do
+        before do
+          Timecop.travel(Time.local(2012, 12, 3, 12, 15, 0))
+          user.incenses.create
+        end
+
+        after do
+          Timecop.return
+        end
+
+        it "not create incense" do
+          expect { post "/api/v1/incenses", token: token }.to_not change {
+            Incense.count
+          }
+          expect(response.status).to be 409
+        end
+      end
+    end
+
+    context "invalid token" do
+      let(:token) { "invalid_#{user.create_token.token}" }
+
+      it "not create incense" do
+        expect { post "/api/v1/incenses", token: token }.to_not change {
+          Incense.count
+        }
+        expect(response.status).to be 401
       end
     end
   end
