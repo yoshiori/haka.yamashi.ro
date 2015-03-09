@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309081510) do
+ActiveRecord::Schema.define(version: 20150309082351) do
 
   create_table "incenses", force: :cascade do |t|
     t.integer  "user_id"
@@ -61,6 +61,17 @@ ActiveRecord::Schema.define(version: 20150309081510) do
   end
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true
+
+  create_table "tokens", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "deleted_at"
+    t.string   "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tokens", ["token"], name: "index_tokens_on_token", unique: true
+  add_index "tokens", ["user_id"], name: "index_tokens_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "uid",        null: false
