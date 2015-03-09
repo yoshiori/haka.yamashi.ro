@@ -1,0 +1,95 @@
+%h1
+  %span.glyphicon.glyphicon-tower
+  API Document
+
+墓では
+%code
+  api/v1/
+以下に API が生えています。
+レスポンスの形式は
+%code
+  JSON
+になります。
+線香を上げる以外は認証は必要ありません。
+
+%h2
+  = fa_icon "hand-o-right"
+  GET incenses
+%hr
+
+%p
+  みんなの上げた線香の一覧が取得できます。一度に 50 件まで取得でき、page パラメータを
+  使用することで更に過去のものも取得できます。
+
+%p
+  response で取得できる
+  %code
+    next_page
+  や
+  %code
+    prev_page
+  が
+  %code
+    null
+  でない場合はその数字を page パラメータに指定することにより、次の 50 件や前の 50 件が取得できます。
+
+
+%h3
+  = fa_icon "rocket"
+  Resource URL
+http://haka.yamashi.ro/api/v1/incenses
+
+%h3
+  = fa_icon "flag"
+  Parameters
+%table.table.table-bordered
+  %thead
+    %tr
+      %th パラメータ名
+      %th 説明
+  %tbody
+    %tr
+      %th
+        %h4
+          page
+          .small
+            optional
+      %td
+        ページネーションのための数字を指定します。
+        何も指定しなかった場合は 1 を指定したことになります。
+
+%h3
+  = fa_icon "terminal"
+  Example Request
+
+  %pre
+    %code
+      :preserve
+        $ curl http://haka.yamashi.ro/api/v1/incenses | jq .
+        {
+          "incenses": [
+            {
+              "created_at": "2015-02-25T22:04:48.054+09:00",
+              "user": {
+                "name": "Yoshiori SHOJI",
+                "nickname": "yoshiori",
+                "image": "https://avatars.githubusercontent.com/u/78609?v=3",
+                "created_at": "2015-02-25T22:04:41.023+09:00"
+              }
+            },
+            {
+              "created_at": "2015-02-24T00:00:00.000+09:00",
+              "user": {
+                "name": "Yoshiori SHOJI",
+                "nickname": "yoshiori",
+                "image": "https://avatars.githubusercontent.com/u/78609?v=3",
+                "created_at": "2015-02-25T22:04:41.023+09:00"
+              }
+            }
+          ],
+          "total_count": 2,
+          "num_pages": 1,
+          "current_page": 1,
+          "next_page": null,
+          "prev_page": null
+        }

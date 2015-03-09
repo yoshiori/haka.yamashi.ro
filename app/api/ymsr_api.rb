@@ -45,7 +45,7 @@ class YmsrAPI < Grape::API
     end
     get ":nickname/incenses", rabl: "incenses/index" do
       @incenses = User.find_by(nickname: params[:nickname])
-                  .incenses.recent.includes(:user)
+                  .incenses.recent
                   .page(params[:page])
     end
   end

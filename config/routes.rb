@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get "/@:nickname/(page/:page)" => "users#show", as: :user
 
+  resource :documents, only: :show
+
   # API
   mount YmsrAPI => "/"
 end
