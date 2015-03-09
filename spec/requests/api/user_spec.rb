@@ -10,6 +10,16 @@ describe YmsrAPI do
     )
   end
 
+  let(:other_user) do
+    User.create(
+      uid: 2,
+      nickname: "hoge",
+      name: "foo",
+      image: "http://example.com/",
+    )
+  end
+
+
   describe "GET /api/v1/users/:nickname" do
     before do
       user.fire_incense
@@ -26,6 +36,35 @@ describe YmsrAPI do
           },
         )
       end
+    end
+  end
+
+  describe "GET /api/v1/users/:nickname/incenses" do
+    before do
+      user.fire_incense
+      other_user.fire_incense
+    end
+
+    it "return user's incenses" do
+      get "/api/v1/users/#{user.nickname}/incenses"
+      expect(response.body).to be_json(
+        incenses: [
+          {
+            created_at: /^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d\.\d\d\d\+\d\d:\d\d/,
+            user: {
+              name: "Yoshiori SHOJI",
+              nickname: "yoshiori",
+              image: "http://example.com/",
+              created_at: /^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d\.\d\d\d\+\d\d:\d\d/,
+            },
+          },
+        ],
+        total_count: 1,
+        num_pages: 1,
+        current_page: 1,
+        next_page: nil,
+        prev_page: nil,
+      )
     end
   end
 end

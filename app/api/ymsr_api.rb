@@ -24,5 +24,12 @@ class YmsrAPI < Grape::API
     get ":nickname", rabl: "users/show" do
       @user = User.find_by(nickname: params[:nickname])
     end
+
+    desc "Return a user's incenses."
+    get ":nickname/incenses", rabl: "incenses/index" do
+      @incenses = User.find_by(nickname: params[:nickname])
+                  .incenses.recent.includes(:user)
+                  .page(params[:page])
+    end
   end
 end
