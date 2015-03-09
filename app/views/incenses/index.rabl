@@ -8,6 +8,6 @@ child(@incenses, object_root: false) do
   extends "incenses/show"
 
   child(:user) do
-    extends "users/show", locals: { show_incenses: false }
+    extends "users/show"
   end
 end

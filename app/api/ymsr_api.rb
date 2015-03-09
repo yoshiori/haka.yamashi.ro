@@ -21,10 +21,8 @@ class YmsrAPI < Grape::API
     end
 
     desc "Return a user detail."
-    get ":nickname" do
+    get ":nickname", rabl: "users/show" do
       @user = User.find_by(nickname: params[:nickname])
-      @incenses = @user.incenses.recent.page(params[:page])
-      render rabl: "users/show", locals: { show_incenses: true }
     end
   end
 end

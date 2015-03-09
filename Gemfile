@@ -79,5 +79,6 @@ end
 
 group :test do
   gem 'rspec-rails', '~> 3.2.0'
+  gem 'rspec-json_matcher'
   gem "timecop"
 end
