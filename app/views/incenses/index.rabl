@@ -1,5 +1,3 @@
-# collection @incenses, root: "incenses", object_root: false
-# extends "incenses/show"
 object false
 node(:total_count) { @incenses.total_count }
 node(:num_pages) { @incenses.num_pages }
@@ -10,6 +8,6 @@ child(@incenses, object_root: false) do
   extends "incenses/show"
 
   child(:user) do
-    extends "users/show"
+    extends "users/show", locals: { show_incenses: false }
   end
 end
