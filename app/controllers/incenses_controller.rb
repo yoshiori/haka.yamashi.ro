@@ -14,10 +14,4 @@ class IncensesController < ApplicationController
   def index
     @incenses = Incense.recent.includes(:user).page(params[:page])
   end
-
-  private
-
-  def login_required
-    head status: 403 unless current_user
-  end
 end

@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
   rescue ActiveRecord::RecordNotFound
     reset_session
   end
+
+  def login_required
+    head status: 403 unless current_user
+  end
 end
