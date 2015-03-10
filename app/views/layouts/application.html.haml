@@ -21,6 +21,10 @@
         .collapse.navbar-collapse#navbar-collapse
           %ul.nav.navbar-nav.navbar-right
             %li
+              = link_to documents_path do
+                = fa_icon "wrench"
+                API
+            %li
               - if current_user
                 = link_to signout_path, method: :delete, data: { toggle: "tooltip", placement: "left" },  title: "Sign Out" do
                   = image_tag current_user.image, size: "22x22", style: "max-width:100px; margin-top: -7px;", class: "img-rounded"
