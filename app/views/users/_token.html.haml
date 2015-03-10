@@ -1,0 +1,19 @@
+- if current_user
+  .panel.panel-default
+    .panel-heading
+      %h3.panel-title
+        あなたの API Token
+    .panel-body
+      %code
+        = current_user.token || "まだ発行されていません"
+  %p
+    = link_to token_path, method: :post, remote: true, class: "create-token btn btn-danger", data: { disable_with: "Token 発行中" } do
+      - if current_user.token
+        API Token のリセット
+      - else
+        API Token の発行
+
+- else
+  = link_to "/auth/github", class: "btn btn-primary btn-lg btn-block" do
+    = fa_icon "github"
+    GitHub でサインインして Token を取得

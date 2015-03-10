@@ -11,17 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302103021) do
+ActiveRecord::Schema.define(version: 20150309095925) do
 
   create_table "incenses", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "source"
   end
 
   add_index "incenses", ["created_at"], name: "index_incenses_on_created_at"
   add_index "incenses", ["user_id", "created_at"], name: "index_incenses_on_user_id_and_created_at"
   add_index "incenses", ["user_id"], name: "index_incenses_on_user_id"
+
+  create_table "tokens", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "deleted_at"
+    t.string   "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "tokens", ["token"], name: "index_tokens_on_token", unique: true
+  add_index "tokens", ["user_id"], name: "index_tokens_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "uid",        null: false
@@ -32,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150302103021) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "users", ["nickname"], name: "index_users_on_nickname"
+  add_index "users", ["nickname"], name: "index_users_on_nickname", unique: true
   add_index "users", ["uid"], name: "index_users_on_uid"
 
 end

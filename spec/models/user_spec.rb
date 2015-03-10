@@ -51,7 +51,9 @@ describe User do
     context "when once a day" do
       context "first fire" do
         it "create new incense" do
-          expect { user.fire_incense }.to change { user.incenses.count }.from(0).to(1)
+          expect { user.fire_incense }.to change {
+            user.incenses.count
+          }.from(0).to(1)
         end
 
         it "post tweet" do
@@ -73,7 +75,9 @@ describe User do
         end
 
         it "create new incense" do
-          expect { user.fire_incense }.to change { user.incenses.count }.from(1).to(2)
+          expect { user.fire_incense }.to change {
+            user.incenses.count
+          }.from(1).to(2)
         end
       end
     end
@@ -95,6 +99,32 @@ describe User do
       it "not create incense" do
         expect { subject }.to_not change { user.incenses.count }
         expect(subject).to be_nil
+      end
+    end
+  end
+
+  describe "#create_token" do
+    let(:user) do
+      User.create(
+        uid: 1,
+        nickname: "yoshiori",
+        name: "Yoshiori SHOJI",
+        image: "http://example.com/",
+      )
+    end
+
+    context "not have token" do
+      it "create token" do
+        expect(user.create_token).to_not be_nil
+      end
+    end
+
+    context "have token" do
+      before do
+        user.create_token
+      end
+      it "change token" do
+        expect { user.create_token }.to change { user.token }
       end
     end
   end

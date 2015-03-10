@@ -40,6 +40,11 @@ GEM
     autoprefixer-rails (5.1.7)
       execjs
       json
+    awesome_print (1.6.1)
+    axiom-types (0.1.1)
+      descendants_tracker (~> 0.0.4)
+      ice_nine (~> 0.11.0)
+      thread_safe (~> 0.3, >= 0.3.1)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -75,6 +80,8 @@ GEM
     capistrano3-unicorn (0.2.1)
       capistrano (~> 3.1, >= 3.1.0)
     coderay (1.1.0)
+    coercible (1.0.0)
+      descendants_tracker (~> 0.0.1)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -86,10 +93,13 @@ GEM
     columnize (0.9.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
+    descendants_tracker (0.0.4)
+      thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
     dotenv (1.0.2)
     dotenv-rails (1.0.2)
       dotenv (= 1.0.2)
+    equalizer (0.0.9)
     erubis (2.7.0)
     execjs (2.3.0)
     faraday (0.9.1)
@@ -100,6 +110,21 @@ GEM
       railties (>= 3.2, < 5.0)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
+    grape (0.11.0)
+      activesupport
+      builder
+      hashie (>= 2.1.0)
+      multi_json (>= 1.3.2)
+      multi_xml (>= 0.5.2)
+      rack (>= 1.3.0)
+      rack-accept
+      rack-mount
+      virtus (>= 1.0.0)
+    grape-rabl (0.3.1)
+      grape
+      i18n
+      rabl
+      tilt
     haml (4.0.6)
       tilt
     haml-rails (0.8.2)
@@ -116,6 +141,7 @@ GEM
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
     i18n (0.7.0)
+    ice_nine (0.11.1)
     jbuilder (2.2.7)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -152,6 +178,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
+    oj (2.12.0)
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
@@ -173,11 +200,17 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.3)
       pry (>= 0.9.10)
+    rabl (0.11.6)
+      activesupport (>= 2.3.14)
     rack (1.6.0)
+    rack-accept (0.4.5)
+      rack (>= 0.4)
     rack-health (0.1.2)
       rack (>= 1.2.0)
     rack-mini-profiler (0.9.3)
       rack (>= 1.1.3)
+    rack-mount (0.8.3)
+      rack (>= 1.0.0)
     rack-revision (1.0.2)
       rack (>= 1.0)
     rack-test (0.6.3)
@@ -214,6 +247,9 @@ GEM
     rspec-expectations (3.2.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
+    rspec-json_matcher (0.1.5)
+      awesome_print
+      json
     rspec-mocks (3.2.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.2.0)
@@ -269,6 +305,11 @@ GEM
       rack
       raindrops (~> 0.7)
     uniform_notifier (1.7.0)
+    virtus (1.0.4)
+      axiom-types (~> 0.1)
+      coercible (~> 1.0)
+      descendants_tracker (~> 0.0, >= 0.0.3)
+      equalizer (~> 0.0, >= 0.0.9)
     web-console (2.0.0)
       activemodel (~> 4.0)
       binding_of_caller (>= 0.7.2)
@@ -292,10 +333,13 @@ DEPENDENCIES
   dotenv-rails
   fluent-logger
   font-awesome-rails
+  grape
+  grape-rabl
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
+  oj
   omniauth-github
   pg
   pry-byebug (~> 3.0.1)
@@ -304,6 +348,7 @@ DEPENDENCIES
   rack-mini-profiler
   rack-revision
   rails (= 4.2.0)
+  rspec-json_matcher
   rspec-rails (~> 3.2.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
