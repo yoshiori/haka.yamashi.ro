@@ -37,6 +37,7 @@ class YmsrAPI < Grape::API
     desc "Return a user detail."
     get ":nickname", rabl: "users/show" do
       @user = User.find_by(nickname: params[:nickname])
+      error!("404 Not Found", 404) unless @user
     end
 
     desc "Return a user's incenses."
@@ -44,9 +45,9 @@ class YmsrAPI < Grape::API
       optional :page, type: Integer, desc: "Page Num"
     end
     get ":nickname/incenses", rabl: "incenses/index" do
-      @incenses = User.find_by(nickname: params[:nickname])
-                  .incenses.recent
-                  .page(params[:page])
+      user = User.find_by(nickname: params[:nickname])
+      error!("404 Not Found", 404) unless user
+      @incenses = user.incenses.recent.page(params[:page])
     end
   end
 end
