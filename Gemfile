@@ -41,6 +41,9 @@ gem 'grape'
 gem 'grape-rabl'
 gem 'oj'
 
+gem 'exception_notification'
+gem 'exception_notification_fluent_logger_notifier'
+
 group :production do
   # Use Unicorn as the app server
   gem 'unicorn'

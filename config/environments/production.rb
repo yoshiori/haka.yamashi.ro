@@ -76,4 +76,19 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  require "exception_notifier/fluent_logger_notifier"
+  config.middleware.use ExceptionNotification::Rack,
+                        fluent_logger: {
+                          tag_prefix: "slack.exception",
+                          logger_settings: {
+                            host: "localhost",
+                            port: 24224,
+                          },
+                          template: {
+                            message: ->(exception, _) {
+                              "Exception: #{exception.class}: #{exception.message} on #{exception.backtrace.first}"
+                            },
+                          },
+                        }
 end
