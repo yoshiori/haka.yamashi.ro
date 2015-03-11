@@ -2,7 +2,6 @@ class YmsrAPI < Grape::API
   version "v1", using: :path
   format :json
   formatter :json, Grape::Formatter::Rabl
-  prefix :api
 
   helpers do
     def token

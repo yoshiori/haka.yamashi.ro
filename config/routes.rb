@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   resource :documents, only: :show
 
   # API
-  mount YmsrAPI => "/"
+   mount YmsrAPI => "/api"
 end
