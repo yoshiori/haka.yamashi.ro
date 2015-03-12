@@ -1,5 +1,6 @@
 class YmsrAPI < Grape::API
   version "v1", using: :path
+  content_type :json, "application/json;charset=UTF-8"
   format :json
   formatter :json, Grape::Formatter::Rabl
 
