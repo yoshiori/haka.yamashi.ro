@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
   def login_required
     head status: 403 unless current_user
   end
+
+  rescue_from WeakParameters::ValidationError do
+    head 400
+  end
 end

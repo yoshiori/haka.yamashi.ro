@@ -23,10 +23,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-gem 'haml-rails'
+gem 'fast_haml'
+#gem 'haml-rails'
 
 gem 'kaminari'
+gem 'weak_parameters'
 
 gem 'omniauth-github'
 gem 'bootstrap-sass'
