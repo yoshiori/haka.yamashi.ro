@@ -67,7 +67,7 @@ describe YmsrAPI do
             },
           ],
           total_count: 1,
-          num_pages: 1,
+          total_pages: 1,
           current_page: 1,
           next_page: nil,
           prev_page: nil,

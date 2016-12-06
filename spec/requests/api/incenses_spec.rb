@@ -50,7 +50,7 @@ describe YmsrAPI do
             },
           ],
           total_count: 2,
-          num_pages: 1,
+          total_pages: 1,
           current_page: 1,
           next_page: nil,
           prev_page: nil,
@@ -63,7 +63,7 @@ describe YmsrAPI do
         get "/api/v1/incenses?page=2"
         expect(response.body).to be_json(
           total_count: 2,
-          num_pages: 1,
+          total_pages: 1,
           current_page: 2,
           next_page: nil,
           prev_page: 1,
